@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moneyログ</title>
+    <link rel="stylesheet" href="../css/box.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.jsライブラリ -->
+</head>
+<body>
+    <center><h1>Moneyログ</h1></center>
+    <div class="box1">
+        <h1>このアプリはお金を管理するアプリです。</h1>
+        <p>The aim of this App is the money management.</p>
+    </div>
+    <center>
+        <div>
+            <button type="button" class="styled1" id="chokin">貯金</button>
+            <button type="button" class="styled2" id="shuppi">出費</button>
+            <button type="button" class="styled3" id="shakkin">借金</button>
+        </div>
+    </center>
+
+    <!-- 年選択のセレクトボックス -->
+    <div id="year-selector" style="margin-top: 20px;">
+        <label for="year">年を選択:</label>
+        <select id="year" onchange="updateChart()">
+            <!-- 年はJavaScriptで動的に追加します -->
+        </select>
+    </div>
+
+    <!-- フォームを表示するためのコンテナ -->
+    <div id="form-container" style="display:none; margin-top: 20px;">
+        <form id="moneyForm">
+            <div>
+                <label for="thing">記述</label>
+                <input type="text" id="thing" required>
+            </div>
+            <div>
+                <label for="money">金額</label>
+                <input type="number" id="money" required>
+            </div>
+            <div>
+                <label for="date">日付</label>
+                <input type="date" id="date" required>
+            </div>
+            <input type="submit" value="追加">
+        </form>
+    </div>
+
+    <!-- 合計金額表示 -->
+    <div id="total-amount" style="margin-top: 20px;">
+        <p><strong>合計金額: ¥<span id="total-amount-value">0</span></strong></p>
+    </div>
+
+    <!-- データ一覧を表示するエリア -->
+    <div id="data-list" style="margin-top: 20px;"></div>
+
+    <!-- 月別集計用のグラフ -->
+    <div id="chart-container" style="width: 80%; margin-top: 20px;">
+        <canvas id="moneyChart"></canvas>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
